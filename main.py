@@ -26,6 +26,8 @@ def main():
 
     filenames = os.listdir(dataset_path)
     for filename in filenames:
+        if filename.split('.')[-1].lower() not in ['png', 'jpg', 'jpeg']:
+            continue
         img = cv2.imread(f'{dataset_path}/{filename}')
         bboxes = object_detector.detect(f'{dataset_path}/{filename}')
         probs = query_evaluator.evaluate(img, query, bboxes)
