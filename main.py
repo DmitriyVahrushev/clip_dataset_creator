@@ -32,7 +32,7 @@ def main():
         res = np.argmax(probs)
         bb_coords = bboxes.xyxy[0][res].cpu().numpy().astype('int')
         res_img = img[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]]
-        cv2.imwrite(f'{output_path}/{filename}.jpg', res_img)
+        cv2.imwrite(f'{output_path}/{filename}', res_img)
 
 
 if __name__ == '__main__':
