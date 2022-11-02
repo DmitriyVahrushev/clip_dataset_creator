@@ -16,7 +16,7 @@ class QueryEvaluator:
             bb_img = image.copy()
             bb_img[:,:,:] = 0
             bb_img[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]] = image[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]]
-            im = Image.fromarray(np.uint8(bb_img*255))
+            im = Image.fromarray(bb_img)
             image1 = self.preprocess(im)
             images.append(image1)
         imgs_tensor = torch.stack(images).to(self.device)
