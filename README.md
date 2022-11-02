@@ -10,6 +10,7 @@ python main.py --orig_dataset_folder images --query "red car" --output_folder da
 TO DO
 
 ## Performance
+0.25s per image on Nvidia Tesla T4
 
 ## System requirements
-* Nvidia GPU with minimum 8GB VRAM
+* Nvidia GPU with minimum 8GB VRAM 
