@@ -22,8 +22,6 @@ class QueryEvaluator:
         imgs_tensor = torch.stack(images).to(self.device)
         text = clip.tokenize([text_query]).to(self.device)
         with torch.no_grad():
-            image_features = self.model.encode_image(imgs_tensor)
-            text_features = self.model.encode_text(text)
             logits_per_image, logits_per_text = self.model(imgs_tensor, text)
             probs = logits_per_text.softmax(dim=-1).cpu().numpy()
         return probs
