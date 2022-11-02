@@ -4,6 +4,7 @@ Command line tool for labeled dataset creation with CLIP
 
 ## Usage example
 ```
+pip install -r requirements.txt
 python main.py --orig_dataset_folder images --query "red car" --output_folder dataset
 ```
 ## Metrics
