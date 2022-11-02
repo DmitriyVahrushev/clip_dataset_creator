@@ -14,11 +14,11 @@ class QueryEvaluator:
         for i in range(bboxes.xyxy[0].shape[0]):
             bb_coords = bboxes.xyxy[0][i].cpu().numpy().astype('int')
             bb_img = image.copy()
+            # fill with 0 everything outside bounding box
             bb_img[:,:,:] = 0
             bb_img[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]] = image[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]]
-            im = Image.fromarray(bb_img)
-            image1 = self.preprocess(im)
-            images.append(image1)
+            processed_image = self.preprocess(Image.fromarray(bb_img))
+            images.append(processed_image)
         imgs_tensor = torch.stack(images).to(self.device)
         text = clip.tokenize([text_query]).to(self.device)
         with torch.no_grad():
