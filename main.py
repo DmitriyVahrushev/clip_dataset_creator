@@ -35,14 +35,14 @@ def main():
         if filename.split('.')[-1].lower() not in ['png', 'jpg', 'jpeg']:
             continue
         img = cv2.imread(f'{dataset_path}/{filename}')
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         bboxes = object_detector.detect(f'{dataset_path}/{filename}')
-        bboxes = 515*bboxes
+        
         probs = query_evaluator.evaluate(img, query, bboxes)
-        print(probs)
         res = np.argmax(probs)
-        bb_coords = bboxes[res].cpu().numpy().astype('int')
-        print(bb_coords[1],bb_coords[3],bb_coords[0],bb_coords[2])
+        bb_coords = bboxes[res]
         res_img = img[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]]
+        res_img = cv2.cvtColor(res_img, cv2.COLOR_BGR2RGB)
         cv2.imwrite(f'{output_path}/{filename}', res_img)
 
 

@@ -9,7 +9,7 @@ class YoloV5ObjectDetector:
 
     def detect(self, image_filename:str):
         results = self.model([image_filename])
-        return results.xyxy[0]
+        return results.xyxy[0].cpu().numpy().astype('int')
 
 
 def _load_img(path):
@@ -24,6 +24,12 @@ class ClassAgnosticObjectDetector:
 
     def detect(self, image_filename:str):
         img = _load_img(image_filename)
+        img_width, img_length = img.shape[1], img.shape[0]
         converted_img  = tf.image.convert_image_dtype(img, tf.float32)[tf.newaxis, ...]
         result = self.detector(converted_img)
-        return result['detection_boxes'][0]
+        detection_boxes = result['detection_boxes'][0].numpy()
+        detection_boxes[:,0] = img_width*detection_boxes[:,0]
+        detection_boxes[:,1] = img_length*detection_boxes[:,1]
+        detection_boxes[:,2] = img_width*detection_boxes[:,2]
+        detection_boxes[:,3] = img_length*detection_boxes[:,3]
+        return detection_boxes.astype('int')
