@@ -4,6 +4,7 @@ pillow
 torch
 tensorflow
 tensorflow-hub
+mean_average_precision
 ftfy
 regex
 tqdm
