@@ -11,11 +11,12 @@ class QueryEvaluator:
 
     def evaluate(self, image, text_query, bboxes):
         images = []
-        for i in range(bboxes.xyxy[0].shape[0]):
-            bb_coords = bboxes.xyxy[0][i].cpu().numpy().astype('int')
+        for i in range(bboxes.shape[0]):
+            bb_coords = bboxes[i].cpu().numpy().astype('int')
             bb_img = image.copy()
             # fill with 0 everything outside bounding box
             bb_img[:,:,:] = 0
+            print(bb_coords[0],bb_coords[1],bb_coords[2],bb_coords[3])
             bb_img[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]] = image[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]]
             processed_image = self.preprocess(Image.fromarray(bb_img))
             images.append(processed_image)

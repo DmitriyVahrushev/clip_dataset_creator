@@ -2,6 +2,8 @@ numpy
 opencv-python
 pillow
 torch
+tensorflow
+tensorflow-hub
 ftfy
 regex
 tqdm
