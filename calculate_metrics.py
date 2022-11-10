@@ -4,9 +4,9 @@ import pandas as pd
 from mean_average_precision import MetricBuilder
 
 
-gt_df = pd.read_csv('labels.csv')
+gt_df = pd.read_csv('misc/labels.csv')
 gt_labels = gt_df.values
-preds_df = pd.read_csv('preds_yolov5.csv')
+preds_df = pd.read_csv('misc/preds_class_agnostic_obj_det.csv')
 preds_labels = preds_df.values
 
 metric_fn = MetricBuilder.build_evaluation_metric("map_2d", async_mode=False, num_classes=1)
