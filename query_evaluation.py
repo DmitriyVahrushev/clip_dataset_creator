@@ -16,7 +16,6 @@ class QueryEvaluator:
             bb_img = image.copy()
             # fill with 0 everything outside bounding box
             bb_img[:,:,:] = 0
-            #print(bb_coords[0],bb_coords[1],bb_coords[2],bb_coords[3])
             bb_img[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]] = image[bb_coords[1]:bb_coords[3],bb_coords[0]:bb_coords[2]]
             #Image.fromarray(bb_img).save(f'temp{i}.jpg')
             processed_image = self.preprocess(Image.fromarray(bb_img))
