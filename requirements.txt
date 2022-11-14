@@ -1,11 +1,11 @@
-numpy
-opencv-python
-pillow
-torch
-tensorflow
-tensorflow-hub
-mean_average_precision
-ftfy
-regex
-tqdm
+numpy==1.23.4
+opencv-python==4.6.0.66
+pillow==9.3.0
+torch==1.13.0
+tensorflow==2.10
+tensorflow-hub==0.12.0
+mean_average_precision==2021.4.26.0
+ftfy==6.1.1
+regex==2022.10.31
+tqdm==4.64.1
 clip @ git+https://github.com/openai/CLIP.git
