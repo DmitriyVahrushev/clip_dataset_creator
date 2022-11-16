@@ -8,17 +8,14 @@ pip install -r requirements.txt
 python main.py --orig_dataset_folder images --query "red car" --output_folder dataset --object_detector yolov5
 ```
 ## Metrics
-To estimate the quality of project I created small dataset with car images. mAP metrics below calculated for query "red car" on this dataset. The dataset can be found in 'images' folder, labels are in 'misc' folder.
+To estimate the quality of project I created small dataset with car images. mAP metrics below calculated for query "red car" on this dataset. The dataset can be found in 'images' folder, labels are in 'misc' folder. <br>
+Presion and recall values were calculated at IoU threshold of 0.5. <br>
+Note that the size of the dataset is very small.
 
-YOLOV5+CLIP <br>
-VOC PASCAL mAP: 0.4848484992980957 <br>
-VOC PASCAL mAP in all points: 0.46666666865348816 <br>
-COCO mAP: 0.34772181510925293 <br>
-
-Class agnostic object detector (performs significantly worse): <br>
-VOC PASCAL mAP: 0.022727273404598236 <br>
-VOC PASCAL mAP in all points: 0.011904762126505375 <br>
-COCO mAP: 0.002475247485563159
+| Model name | VOC PASCAL mAP | VOC PASCAL mAP in all points | COCO mAP | Presicion | Recall
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+YOLOV5+CLIP | 1.0 | 1.0 | 0.74803626537323 | 1.0 | 1.0
+Class agnostic object detector+CLIP | 0.0844 | 0.07755102217197418 | 0.010289957746863365 | 1.0 | 0.09524
 
 ## Performance
 ~0.32s per image on Nvidia RTX3060. Calculated using the dataset discribed above.
