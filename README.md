@@ -14,8 +14,8 @@ Note that the size of the dataset is very small.
 
 | Model name | VOC PASCAL mAP | VOC PASCAL mAP in all points | COCO mAP | Presicion | Recall
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-YOLOV5+CLIP | 1.0 | 1.0 | 0.74803626537323 | 1.0 | 1.0
-Class agnostic object detector+CLIP | 0.0844 | 0.07755102217197418 | 0.010289957746863365 | 1.0 | 0.09524
+YOLOV5+CLIP | 1.0 | 1.0 | 0.7480 | 1.0 | 1.0
+Class agnostic object detector+CLIP | 0.0844 | 0.0776 | 0.0103 | 1.0 | 0.09524
 
 ## Performance
 ~0.32s per image on Nvidia RTX3060. Calculated using the dataset discribed above.
